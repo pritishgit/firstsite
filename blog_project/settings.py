@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-(_g2w8534t3utft8cz@5_%)-g87_73abum+%%a6zk79sm@s62w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    'whitenoise.runserver_nostatic',
     "django.contrib.staticfiles",
     "blog.apps.BlogConfig",
     "accounts.apps.AccountsConfig",
@@ -126,3 +127,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new!
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
